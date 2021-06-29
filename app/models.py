@@ -54,8 +54,6 @@ class slider(models.Model):
 
 class certification(models.Model):
     image=models.ImageField(upload_to='static')
-    width=models.IntegerField(null=True)
-    height=models.IntegerField(null=True)
 
 
 class code(models.Model):

@@ -1,0 +1,98 @@
+{% extends "basic.html" %}
+{% block title %} {{a.site_short_name}} | Python Projects {% endblock %}
+{% block body %}
+
+
+<!--name-->
+<p style="font-size: 250%; font-family: Kristen ITC; color: blue; margin-left: 7%; text-align: center;">{{Scratch_Projects.name}}</p>
+<hr>
+<!--name end-->
+
+
+<!--main card-->
+<div class="row" style="width: 100%;">
+    <div class="col-sm-6">
+
+      <!--card 1-->
+      <div class="card" style="margin-top: 2%; margin-bottom: 2%;">
+        <table style="margin-top: 3%; margin-bottom: 3%;">
+          <tr>
+            <td>
+
+            <!---->
+              <style>
+                .the_main {
+                  position: relative;
+                  text-align: center;
+                  color: white;
+                }
+                .centered {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                }
+                </style>
+
+                <!--main-->
+                <a href="{{Scratch_Projects.video_link}}" target="_blank"><div class="the_main">
+
+                  <!--image-->
+                  <img src="/media/{{Scratch_Projects.image}}" alt="Snow" style="width:100%;">
+                  <!--image end-->
+
+                  <!--text on image-->
+                  <div class="centered" style="background-color:#7f7f7f; background:rgba(0,0,0,0.6); font-size: 3em; font-weight:bold; color: #fff; width: 93%; font-family: Kristen ITC;">Click to play video</div>
+                  <!--text on image end-->
+
+                </div></a>
+                <!--main end-->
+
+              <!---->
+
+          </td>
+          </tr>
+        </table>
+      </div>
+      <!--card 1 end-->
+
+
+    </div>
+    <div class="col-sm-6">
+
+      <!--card 2-->
+      <div class="card" style="margin-top: 2%; margin-bottom: 2%;">
+        <table style="margin-top: 3%; margin-bottom: 3%;">
+          <tr>
+        <td style="width: 50%;">
+
+          <!---->
+          <div class="specs" style="font-size: large;">
+            <p style="font-size: 150%; font-family: Kristen ITC; color: black;">About this Project:</p>
+
+          <!--about-->
+          <ul>
+            <li>{{Scratch_Projects.about_1}}</li>
+            <li>{{Scratch_Projects.about_2}}</li>
+            <li>{{Scratch_Projects.about_3}}</li>
+          </ul>
+          <!--about end-->
+
+          </div>
+          <br>
+          <!---->
+
+        </td>
+      </tr>
+      </table>
+
+      </div>
+      <!--card 2 end-->
+
+
+    </div>
+  </div>
+<!--main card end-->
+
+
+{% endblock %}

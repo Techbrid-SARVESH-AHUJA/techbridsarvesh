@@ -1,0 +1,90 @@
+{% extends "basic.html" %}
+{% block title %} {{a.site_short_name}} | Feedback {% endblock %}
+{% block body %} 
+
+
+<script>
+    function submit_message() {
+      alert("Thanks for giving your feedback 🙂")
+    }
+</script>
+  
+
+<!--main card-->
+  <div class="row" style="margin-top: 2%; margin-bottom: 2%; font-family: Kristen ITC; width: 100%;">
+
+    <!--card 1-->
+    <div class="col-sm-6">
+      <div class="card border border-primary" style="font-size: 20px;">  
+        <table>
+          <tr>
+          <td>
+
+          <h1 style="text-align: center; margin-top: 1%; color: blue;">Please give your feedback</h1>
+
+          <!--feedback form-->
+            <div class="form">
+              <form method="POST" onsubmit="return submit_message()">
+                {% csrf_token %}
+                  <div class="mb-3 mt-4">
+                    <input type="text" name="name" maxlength="200" required="" id="id_name" style="width: 97%;" placeholder="NAME:">
+                    <br><br>
+                    <input type="email" name="e_mail" maxlength="200" required="" id="id_e_mail" style="width: 97%;" placeholder="E-MAIL:">
+                    <br><br>
+                    <textarea type="text" name="feedback" maxlength="500" required="" id="id_feedback" style="width: 97%; height: 150px;" placeholder="FEEDBACK:"></textarea>
+                    <br><br>
+                    <input type="submit" class="btn btn-primary" style="font-size: 30px; width: 97%;" value="Submit">
+                  </div>
+                </form>
+              </div>
+            <!--feedback form end-->
+
+          </td>
+          </tr>
+          </table>
+      </div>
+    </div>
+    <!--card 1 end-->
+
+    <!--card 2-->
+    <div class="col-sm-6">
+      <div class="card border border-primary">
+        <table style="margin-bottom: 4%; margin-top: 4%;">
+          <tr>
+          <td>
+        <div style="text-align: center;">
+
+          <label style="font-size: 25px; font-family:arial black;">You can contact me on: </label>
+
+        </div>
+          <br><br>
+
+          <!--contact details-->
+          {% for a in Details %}
+          <img src="/media/static/mail_icon.png" height=50 width=70>
+          <label style="font-size: 20px; font-family:arial black"> : <a href="mailto:{{a.site_mail}}"><font color="black">{{a.site_mail}}</font></a></label>
+          <br><br>
+          <label style="font-family: Kristen ITC; font-size: 150%;">OR</label>
+          <br><br>
+          <img src="/media/static/call_icon.png" height=50 width=50>
+          <label style="font-size: 25px;font-family:arial black"> : <a href="tel:{{a.site_phone}}"><font color="black">{{a.site_phone}}</font></a></label>
+          <br><br>
+          <label style="font-family: Kristen ITC; font-size: 150%;">OR</label>
+          <br><br>
+          <img src="/media/static/whatsapp.png" height=60 width=60>
+          <label style="font-size: 25px;font-family:arial black"> : <a href="https://wa.me/+91{{a.site_phone}}"><font color="black">{{a.site_phone}}</font></a></label>
+          {% endfor %}
+          <!--contact details end-->
+
+          </td>
+          </tr>
+          </table>
+      </div>
+    </div>
+    <!--card 2 end-->
+
+  </div>
+<!--main card end-->
+
+
+{% endblock %}

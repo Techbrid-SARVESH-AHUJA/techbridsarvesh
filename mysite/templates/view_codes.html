@@ -1,0 +1,23 @@
+{% extends "basic.html" %}
+{% block title %} {{a.site_short_name}} | View Codes {% endblock %}
+{% block body %}
+
+
+<!--name-->
+<p style="font-size: 300%; font-family: Kristen ITC; color: blue; margin-left: 7%; text-align: center;">{{Codes.name}}</p>
+<!--name end-->
+
+<hr>
+<br>
+
+<!--code-->
+<pre>
+{{Codes.code}}
+</pre>
+<!--code end-->
+
+<hr>
+<br>
+
+
+{% endblock %}

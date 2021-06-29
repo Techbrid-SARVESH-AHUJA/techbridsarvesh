@@ -1,0 +1,201 @@
+{% extends "basic.html" %}
+{% block title %} {{a.site_short_name}} | Projects {% endblock %}
+{% block body %} 
+
+
+<!--starting card-->
+<div class="row" style="width: 100%; font-family: Kristen ITC;">
+
+  <!--card 1-->
+  <div class="col-sm-6">
+    <div class="card border-info">
+
+      <!--video-->
+      <video  autoplay loop muted style="width: 100%; margin-top: 5%; margin-bottom: 5%;">
+        <source src="/media/static/intro_projects.mp4" type="video/mp4">
+      </video>  
+      <!--video end-->
+
+    </div>
+  </div>
+  <!--card 1 end-->
+
+  <!--card 2-->
+  <div class="col-sm-6">
+    <div class="card border-info">
+
+      <!--text-->
+      <h2 style="margin-top: 2%; color: blue;">I have made many projects using Arduino, Python, Basic Electronics, Scratch, Django, etc.</h2>
+      <h2 style="margin-bottom: 2%; color: blue; text-align: center;"><a href="https://www.youtube.com/channel/UCq1j1cbmMLmW5uqDSNJ-c2Q?sub_confirmation=1" target="_blank">Click to view my YouTube Channel</a></h2>
+      <!--text end-->
+
+      <!--buttons-->
+      <div class="d-grid gap-2 col-6 mx-auto" style="text-align: center; width: 100%; font-family: Kristen ITC; margin-top: 3%;">
+        <a href="{% url 'my_projects' %}#python_projects"><button class="btn btn-primary" type="button" style="font-size: 170%; margin-bottom: 1%;">Click to view Python Projects</button></a>
+        <a href="{% url 'my_projects' %}#arduino_projects"><button class="btn btn-primary" type="button" style="font-size: 170%; margin-bottom: 1%;">Click to view Arduino Projects</button></a>
+        <a href="{% url 'my_projects' %}#scratch_projects"><button class="btn btn-primary" type="button" style="font-size: 170%; margin-bottom: 1%;">Click to view Scratch Projects</button></a>
+        <a href="{% url 'my_projects' %}#basic_electronics_projects"><button class="btn btn-primary" type="button" style="font-size: 170%; margin-bottom: 1%;">Click to view Basic Electronics Projects</button></a>
+      </div>
+      <!--buttons end-->
+
+    </div>
+  </div>
+  <!--card 2 end-->
+
+</div>
+<!--starting card end-->
+
+
+<!--python projects-->
+<div id="python_projects" style="margin-top: 7%;"></div>
+
+<!--heading-->
+<h1 style="color: blue; text-align: center; font-family: Kristen ITC; font-size: 300%;">--- Python Projects ---</h1>
+<!--heading end-->
+
+<!--card-->
+<div class="row" style="font-family: Kristen ITC; width: 100%;">
+{% for a in Python_Projects %}
+  <div class="col-sm-6" style="margin-top: 2%;">
+    <div class="card border-warning">
+      <div class="card-body" style="text-align: center;">
+
+        <!--name-->
+        <h5 class="card-title" style="text-align: center; color: blue; font-size: 250%;">{{a.name}}</h5>
+        <!--name end-->
+
+        <!--image-->
+        <a href="{% url 'python_projects' a.id %}">
+        <img src="/media/{{a.image}}" style="margin-bottom: 2%; width: 100%;">
+        </a>
+        <!--image end-->
+
+        <!--button-->
+        <a href="{% url 'python_projects' a.id %}" class="btn btn-primary" style="width: 100%; font-size: 170%;">Click to view project</a>
+        <!--button end-->
+
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+<!--card end-->
+
+<!--python projects end-->
+
+
+<!--arduino projects-->
+<div id="arduino_projects" style="margin-top: 7%;"></div>
+  
+<!--heading-->
+<h1 style="color: blue; text-align: center; font-family: Kristen ITC; font-size: 300%;">--- Arduino Projects ---</h1>
+<!--heading end-->
+
+<!--card-->
+<div class="row" style="font-family: Kristen ITC; width: 100%;">
+{% for a in Arduino_Projects %}
+  <div class="col-sm-6" style="margin-top: 2%;">
+    <div class="card border-warning">
+      <div class="card-body" style="text-align: center;">
+
+        <!--name-->
+        <h5 class="card-title" style="text-align: center; color: blue; font-size: 250%;">{{a.name}}</h5>
+        <!--name end-->
+
+        <!--image-->
+        <a href="{% url 'arduino_projects' a.id %}">
+        <img src="/media/{{a.image}}" style="margin-bottom: 2%; width: 100%;">
+        </a>
+        <!--image end-->
+
+        <!--button-->
+        <a href="{% url 'arduino_projects' a.id %}" class="btn btn-primary" style="width: 100%; font-size: 170%;">Click to view project</a>
+        <!--button end-->
+
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+<!--card end-->
+
+<!--arduino projects end-->
+
+
+<!--scratch projects-->
+<div id="scratch_projects" style="margin-top: 7%;"></div>
+  
+<!--heading-->
+<h1 style="color: blue; text-align: center; font-family: Kristen ITC; font-size: 300%;">--- Scratch Projects ---</h1>
+<!--heading end-->
+
+<!--card-->
+<div class="row" style="font-family: Kristen ITC; width: 100%;">
+{% for a in Scratch_Projects %}
+  <div class="col-sm-6" style="margin-top: 2%;">
+    <div class="card border-warning">
+      <div class="card-body" style="text-align: center;">
+
+        <!--name-->
+        <h5 class="card-title" style="text-align: center; color: blue; font-size: 250%;">{{a.name}}</h5>
+        <!--name end-->
+
+        <!--image-->
+        <a href="{% url 'scratch_projects' a.id %}">
+        <img src="/media/{{a.image}}" style="margin-bottom: 2%; width: 100%;">
+        </a>
+        <!--image end-->
+        
+        <!--button-->
+        <a href="{% url 'scratch_projects' a.id %}" class="btn btn-primary" style="width: 100%; font-size: 170%;">Click to view project</a>
+        <!--button end-->
+
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+<!--card end-->
+
+<!--scratch projects end-->
+
+
+<!--basic electronics projects-->
+<div id="basic_electronics_projects" style="margin-top: 7%;"></div>
+
+<!--heading-->
+<h1 style="color: blue; text-align: center; font-family: Kristen ITC; font-size: 300%;">--- Basic Electronics Projects ---</h1>
+<!--heading end-->
+
+<!--card-->
+<div class="row" style="font-family: Kristen ITC; width: 100%;">
+{% for a in Basic_Projects %}
+  <div class="col-sm-6" style="margin-top: 2%;">
+    <div class="card border-warning">
+      <div class="card-body" style="text-align: center;">
+
+        <!--name-->
+        <h5 class="card-title" style="text-align: center; color: blue; font-size: 250%;">{{a.name}}</h5>
+        <!--name end-->
+
+        <!--image-->
+        <a href="{% url 'basic_electronics_projects' a.id %}">
+        <img src="/media/{{a.image}}" style="margin-bottom: 2%; width: 100%;">
+        </a>
+        <!--image end-->
+        
+        <!--button-->
+        <a href="{% url 'basic_electronics_projects' a.id %}" class="btn btn-primary" style="width: 100%; font-size: 170%;">Click to view project</a>
+        <!--button end-->
+
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+<!--card end-->
+
+<!--basic electronics projects end-->
+
+
+{% endblock %}

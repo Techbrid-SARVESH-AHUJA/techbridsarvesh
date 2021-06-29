@@ -1,0 +1,108 @@
+{% extends "basic.html" %}
+{% block title %} {{a.site_short_name}} | Home {% endblock %}
+{% block body %} 
+
+
+<h1 style="font-family: Kristen ITC; font-size: 300%; width: 100%; text-align: center; color: blue; margin-top: 2%;">WELCOME TO Techbrid SARVESH AHUJA'S Website</h1>
+<hr style="margin-bottom: 2%;">
+
+
+<!--slider staring styles-->
+<div class="col-md-12" style="font-family: Kristen ITC; background-color: black;">
+<div class="main" style="margin-top: 2%; margin-bottom: 2%; margin-left: 8%; margin-right: 8%;">
+<!--slider staring styles end-->
+
+
+<!--slider-->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="margin-bottom: 2%;">
+    <div class="carousel-indicators">
+
+      <!--buttons-->
+      {% for a in Slider %}
+      <button type="button" data-bs-target="#carouselExampleCaptions" {{a.button_format}} style="background-color: black;"></button>
+      {% endfor %}
+      <!--buttons end-->
+
+    </div>
+
+    <!--slides-->
+    <div class="carousel-inner" style="background-color: black;">
+        {% for a in Slider %}
+        <div class="{{a.div_style}}">
+
+            <!--image-->
+            <img src="/media/{{a.image}}" class="d-block" alt="..." style=" width: 100%; margin-left: auto; margin-right: auto;">
+            <!--image end-->
+
+            <div class="carousel-caption d-none d-md-block">
+
+            <!--name-->
+            <h5 style="font-family: Kristen ITC; font-size: 150%; background-color: greenyellow; color: black;">{{a.title}}</h5>
+            <!--name end-->
+
+            <!--description-->
+            <p style="font-family: Kristen ITC; font-size: 150%; background-color: greenyellow; color: black;">{{a.description}}</p>
+            <!--description end-->
+
+            <!--button-->
+            <a href="{{a.button_link}}"><button style="font-family: Kristen ITC; font-size: 160%; background-color: darkturquoise; width: 100%;">Click to view project</button></a>
+            <!--button end-->
+            
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--slides end-->
+
+    <!--triangle buttons-->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    <!--triangle buttons end-->
+
+  </div>
+<!--slider end-->
+
+
+<!--slider staring style's ending-->
+</div>
+</div>
+<!--slider staring style's ending end-->
+
+
+<!--intro video-->
+<video  autoplay loop muted style="width: 100%;">
+    <source src="/media/static/intro.mp4" type="video/mp4">
+</video>  
+<!--intro video end-->
+
+
+<!--description text-->
+<hr style="margin-top: 5%;">
+<p style="font-family: Kristen ITC; font-size: 200%;">
+  {% for a in Details %}
+    {{a.site_description}}
+  {% endfor %}
+</p>
+<hr style="margin-bottom: 3%;">
+<br>
+<!--description text end-->
+
+
+<!--buttons-->
+<div class="d-grid gap-2 col-6 mx-auto" style="text-align: center; width: 100%; font-family: Kristen ITC; margin-top: 3%;">
+  <a href="{% url 'my_projects' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">Click to view All my projects</button></a>
+  <a href="{% url 'python_projects_codes' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">Click to view All Python projects codes</button></a>
+  <a href="{% url 'certifications' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">Click to view my Certifications</button></a>
+  <a href="{% url 'feedback' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">please give your Feedback</button></a>
+  <a href="{% url 'blog' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">Click to enter Blog</button></a>
+</div>
+<!--buttons end-->
+
+
+{% endblock %}

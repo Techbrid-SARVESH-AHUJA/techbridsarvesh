@@ -1,0 +1,55 @@
+{% extends "basic.html" %}
+{% block title %} {{a.site_short_name}} | Codes {% endblock %}
+{% block body %}  
+
+
+<!--
+  <div id="form">
+    <p style="text-align: center; font-family: Kristen ITC; font-size: 140%; color: blue;">Please enter your name and e-mail to view codes</p>
+    <div id="blog_form_card" class="card" style="width: 22rem; margin: auto; margin-top: 2%; margin-bottom: 2%;">
+      <form method="POST" style="text-align: center; font-family: Kristen ITC; font-size: x-large;" onsubmit="show()">
+        {% csrf_token %}
+        {{form.name}}
+        <br>
+        {{form.e_mail}}
+        <br>
+        <input type="submit" class="btn btn-info" style="font-size: x-large; width: 23%; font-family: Kristen ITC; width: 100%; margin-top: 2%; margin-bottom: 2%;" value="SUBMIT">
+      </form>
+    </div>
+  </div>
+-->
+  
+<script>
+  function hide(){
+    document.querySelector("#main").hidden = true;
+    document.querySelector("#form").hidden = false;
+  }
+  function show(){
+    document.querySelector("#main").hidden = false;
+    document.querySelector("#form").hidden = true;
+  }
+</script>
+
+<div id="main">
+<!--codes card-->
+  {% for a in Codes %}
+  <div class="card" style="margin-top: 2%; margin-bottom: 2%; text-align: center; font-family: Kristen ITC;">
+    <!--name-->
+    <h5 class="card-header" style="font-size: 300%; background-color: darkturquoise;">{{a.name}}</h5>
+    <!--name end-->
+    <div class="card-body">
+      <!--download link-->
+      <a href="{{a.link}}" target="_blank" class="btn" style="font-size: 200%; background-color: chartreuse; margin-right: 2%; margin-top: 2%;">Click to download code</a>
+      <!--download link end-->
+      <!--view code-->
+      <a href="{% url 'view_codes' a.id %}"  class="btn" style="font-size: 200%; background-color: chartreuse; margin-left: 2%; margin-top: 2%;">Click to view code</a>
+      <!--view code end-->
+    </div>
+  </div>
+  <br><hr>
+  {% endfor %}
+<!--codes card end-->
+</div>
+
+
+{% endblock %}

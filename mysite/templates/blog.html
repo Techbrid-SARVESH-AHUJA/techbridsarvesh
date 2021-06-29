@@ -1,0 +1,75 @@
+{% extends "basic.html" %}
+{% block title %} {{a.site_short_name}} | Blog {% endblock %}
+{% block body %} 
+
+
+<body onload="hide()">
+
+
+    <style>
+        div.blog_poster_name {
+            text-transform: uppercase;
+        }
+    </style>
+
+
+    <script>
+        function show(){
+            document.querySelector("#blog_form_card").hidden = false;
+            document.getElementById("add_button").hidden = true;
+        }
+        function hide(){
+            document.querySelector("#blog_form_card").hidden = true;
+            document.getElementById("add_button").hidden = false;
+        }
+        function form_submit_message(){
+            alert("Thanks for adding a blog post to my website")
+        }
+    </script>
+
+
+  <h1 style="margin-top: 2%; font-family: Kristen ITC; font-size: 300%; color: blue; text-align: center;">----BLOGS----</h1>
+
+
+  <!--new blog form-->
+  <div id="blog_form_card" class="card" style="width: 22rem; margin: auto; margin-top: 2%; margin-bottom: 2%;">
+    <form method="POST" style="text-align: center; font-family: Kristen ITC; font-size: x-large;" onsubmit="form_submit_message()">
+      {% csrf_token %}
+      <input type="text" name="name" maxlength="200" required="" id="id_name" placeholder="NAME: " style="width: 100%; margin-top: 2%;">
+      <br>
+      <textarea name="message" maxlength="500" required="" id="id_message" placeholder="COMMENT: "style="width: 100%; height: 150px; margin-top: 2%;"></textarea>
+      <br>
+      <input type="submit" class="btn btn-info" style="font-size: x-large; width: 23%; font-family: Kristen ITC; width: 100%; margin-top: 2%; margin-bottom: 2%;" value="SUBMIT">
+    </form>
+  </div>
+  <!--new blog form end-->
+
+
+  <button id="add_button" class="btn btn-info" style="font-size: x-large; width: 23%; font-family: Kristen ITC; width: 100%; margin-top: 2%; margin-bottom: 2%;" onclick="show()">Add a new Blog Post</button>
+
+
+  <!--blogs-->
+  <div class="row" style="font-family: Kristen ITC; width: 100%;">
+{% for a in blogs %}
+    <div class="col-sm-6" style="margin-top: 2%;">
+      <div class="card">
+        <div class="card-body">
+        <div class="blog_poster_name">
+          <h5 class="card-title" style="text-align: center; font-size: 180%;"><b><u>BY: {{a.name}}</u></b></h5>
+          <p class="card-text" style="font-size: 110%;">{{a.date}}</p>
+          <hr>
+        </div>
+          <p class="card-text" style="font-size: 130%;">{{a.message}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!--blogs end-->
+
+
+<br>
+</body>
+
+
+{% endblock %}

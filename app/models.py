@@ -81,7 +81,6 @@ class scratch_project(models.Model):
     video_link=models.CharField(max_length=300, null=True)
     about_1=models.TextField(max_length=500, null=True)
     about_2=models.TextField(max_length=500, null=True)
-    about_3=models.TextField(max_length=500, null=True)
     def __str__ (self):
         return self.name
 

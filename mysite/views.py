@@ -75,7 +75,7 @@ def feedback(request):
 
         #final_message = "Name: " + user_name + " (" + e_mail_address + ") " + "     " + "Message: " + feedback_message
 
-        send_mail("New feedback on your website", final_message, 'website.submissions1@gmail.com', ['sarvesh.ahuja1234@gmail.com'], fail_silently=False)
+        send_mail("New feedback on your website", final_message, 'website.submissions1@gmail.com', ['10026.dpsgv@dpsgs.org'], fail_silently=False)
 
         if form.is_valid:
             form.save()

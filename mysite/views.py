@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from app.models import *
 from app.forms import *
+from django.core.mail import send_mail
 
 
 def index(request):
@@ -51,6 +52,31 @@ def feedback(request):
     form=feedback_form
     if request.method=='POST':
         form=feedback_form(request.POST)
+
+        user_name = request.POST.get('name')
+        e_mail_address = request.POST.get('e_mail')
+        feedback_message = request.POST.get('feedback')
+
+        t1 = '''
+        
+        '''
+
+        user_name_1 = '''Name: ''' + user_name + '''
+        
+        '''
+        e_mail_address_1 = '''E-mail: ''' + e_mail_address + '''
+        
+        '''
+        feedback_message_1 = '''Message: ''' + feedback_message + '''
+        
+        '''
+        
+        final_message = t1 + user_name_1 + e_mail_address_1 + feedback_message_1
+
+        #final_message = "Name: " + user_name + " (" + e_mail_address + ") " + "     " + "Message: " + feedback_message
+
+        send_mail("New feedback on your website", final_message, 'sarvesh.ahuja1234@gmail.com', ['sarvesh.ahuja1234@gmail.com'], fail_silently=False)
+
         if form.is_valid:
             form.save()
     #new feedback form end

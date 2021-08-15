@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import *
 
+
+
+
+
 admin.site.register(site)
 admin.site.register(social_media_link)
 admin.site.register(blog_data)

@@ -97,8 +97,17 @@
 <!--buttons-->
 <div class="d-grid gap-2 col-6 mx-auto" style="text-align: center; width: 100%; font-family: Kristen ITC; margin-top: 3%;">
   <a href="{% url 'my_projects' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">Click to view All my projects</button></a>
-  <a href="{% url 'python_projects_codes' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">Click to view All Python projects codes</button></a>
-  <a href="{% url 'certifications' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">Click to view my Certifications</button></a>
+
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" style="font-size: 200%; margin-bottom: 1%; width: fit-content; margin: auto;" aria-expanded="false">
+    Click to view codes
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="{% url 'python_projects_codes' %}">Click to view All Python projects codes</a></li>
+    <li><a class="dropdown-item" href="{% url 'scratch_projects_codes' %}">Click to view All Scratch projects codes</a></li>
+  </ul>
+
+
+  <a href="{% url 'certifications' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%; margin-top: 1%;">Click to view my Certifications</button></a>
   <a href="{% url 'feedback' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">please give your Feedback</button></a>
   <a href="{% url 'blog' %}"><button class="btn btn-primary" type="button" style="font-size: 200%; margin-bottom: 1%;">Click to enter Blog</button></a>
 </div>

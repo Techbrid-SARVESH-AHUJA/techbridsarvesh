@@ -25,18 +25,19 @@ def my_projects(request):
 
 
 def python_projects_codes(request):
-    #new feedback form
-    form=code_login
-    if request.method=='POST':
-        form=code_login(request.POST)
-        if form.is_valid:
-            form.save()
-    #new feedback form end
-    Codes=code.objects.all()
+    Codes=python_code.objects.all()
     Social=social_media_link.objects.all()
     Details=site.objects.all()
-    context={"Details": Details, "Social": Social, "Codes": Codes, "form": form}
+    context={"Details": Details, "Social": Social, "Codes": Codes}
     return render(request, "python_projects_codes.html", context)
+
+
+def scratch_projects_codes(request):
+    Codes=scratch_code.objects.all()
+    Social=social_media_link.objects.all()
+    Details=site.objects.all()
+    context={"Details": Details, "Social": Social, "Codes": Codes}
+    return render(request, "scratch_projects_codes.html", context)
 
 
 def certifications(request):
@@ -102,7 +103,7 @@ def blog(request):
 
 
 def python_projects(request, pk_prod):
-    Codes=code.objects.get(id=pk_prod)
+    Codes=python_code.objects.get(id=pk_prod)
     Python_Projects=python_project.objects.get(id=pk_prod)
     Social=social_media_link.objects.all()
     Details=site.objects.all()
@@ -135,7 +136,7 @@ def basic_electronics_projects(request, pk_prod):
 
 
 def view_codes(request, pk_prod):
-    Codes=code.objects.get(id=pk_prod)
+    Codes=python_code.objects.get(id=pk_prod)
     Social=social_media_link.objects.all()
     Details=site.objects.all()
     context={"Details": Details, "Social": Social, "Codes": Codes}

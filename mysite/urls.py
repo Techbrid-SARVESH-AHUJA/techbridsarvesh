@@ -34,6 +34,8 @@ urlpatterns = [
     path('my_projects/', views.my_projects, name="my_projects"),
     
     path('python_projects_codes/', views.python_projects_codes, name="python_projects_codes"),
+
+    path('scratch_projects_codes/', views.scratch_projects_codes, name="scratch_projects_codes"),
     
     path('feedback/', views.feedback, name="feedback"),
 

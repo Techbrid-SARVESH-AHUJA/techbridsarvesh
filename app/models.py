@@ -56,7 +56,15 @@ class certification(models.Model):
     image=models.ImageField(upload_to='static')
 
 
-class code(models.Model):
+class python_code(models.Model):
+    name=models.CharField(max_length=200, null=True)
+    link=models.CharField(max_length=300, null=True)
+    code=models.TextField(max_length=100000, null=True)
+    def __str__ (self):
+        return self.name
+
+
+class scratch_code(models.Model):
     name=models.CharField(max_length=200, null=True)
     link=models.CharField(max_length=300, null=True)
     code=models.TextField(max_length=100000, null=True)

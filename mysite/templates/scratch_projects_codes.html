@@ -1,7 +1,8 @@
 {% extends "basic.html" %}
-{% block title %} {{a.site_short_name}} | Codes {% endblock %}
+{% block title %} {{a.site_short_name}} | Scratch Codes {% endblock %}
 {% block body %}  
 
+<body onload="main()">
 
 <!--
   <div id="form">
@@ -20,6 +21,11 @@
 -->
   
 <script>
+  
+  function main(){
+    document.getElementById("-").hidden = true
+  }
+
   function hide(){
     document.querySelector("#main").hidden = true;
     document.querySelector("#form").hidden = false;
@@ -30,19 +36,34 @@
   }
 </script>
 
+
 <div id="main">
 <!--codes card-->
   {% for a in Codes %}
-  <div class="card" style="margin-top: 2%; margin-bottom: 2%; text-align: center; font-family: Kristen ITC;">
+  <div class="card" id="{{a.name}}" style="margin-top: 2%; margin-bottom: 2%; text-align: center; font-family: Kristen ITC;">
     <!--name-->
     <h5 class="card-header" style="font-size: 300%; background-color: darkturquoise;">{{a.name}}</h5>
     <!--name end-->
     <div class="card-body">
       <!--download link-->
+
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" style="font-size: 200%; background-color: chartreuse; margin-right: 2%; margin-top: 2%;" aria-expanded="false">
+        Click to download code
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="{{a.sb2_link}}" target="_blank">Download .sb2 (Scratch File)</a></li>
+        <li><a class="dropdown-item" href="{{a.apk_link}}" target="_blank">Download .apk (Mobile app File)</a></li>
+      </ul>
+
+      <!--
       <a href="{{a.link}}" target="_blank" class="btn" style="font-size: 200%; background-color: chartreuse; margin-right: 2%; margin-top: 2%;">Click to download code</a>
+      -->
+
       <!--download link end-->
       <!--view code-->
-      <a href="{% url 'view_codes' a.id %}"  class="btn" style="font-size: 200%; background-color: chartreuse; margin-left: 2%; margin-top: 2%;">Click to view code</a>
+      <a href="{% url 'view_scratch_codes' a.id %}"  class="btn" style="font-size: 200%; background-color: chartreuse; margin-left: 2%; margin-top: 2%;">Click to view code</a>
+
+      <a href="{% url 'play_scratch_game' a.id %}"  class="btn" style="font-size: 200%; background-color: chartreuse; margin-left: 2%; margin-top: 2%;">Click to Play Game online</a>
       <!--view code end-->
     </div>
   </div>

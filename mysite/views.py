@@ -120,10 +120,11 @@ def arduino_projects(request, pk_prod):
 
 
 def scratch_projects(request, pk_prod):
+    Codes=scratch_code.objects.get(id=pk_prod)
     Scratch_Projects=scratch_project.objects.get(id=pk_prod)
     Social=social_media_link.objects.all()
     Details=site.objects.all()
-    context={"Details": Details, "Social": Social, "Scratch_Projects": Scratch_Projects}
+    context={"Details": Details, "Social": Social,"Codes": Codes, "Scratch_Projects": Scratch_Projects}
     return render(request, "scratch_projects.html", context)
 
 
@@ -135,9 +136,25 @@ def basic_electronics_projects(request, pk_prod):
     return render(request, "basic_electronics_projects.html", context)
 
 
-def view_codes(request, pk_prod):
+def view_python_codes(request, pk_prod):
     Codes=python_code.objects.get(id=pk_prod)
     Social=social_media_link.objects.all()
     Details=site.objects.all()
     context={"Details": Details, "Social": Social, "Codes": Codes}
-    return render(request, "view_codes.html", context)
+    return render(request, "view_python_codes.html", context)
+
+
+def view_scratch_codes(request, pk_prod):
+    Codes=scratch_code.objects.get(id=pk_prod)
+    Social=social_media_link.objects.all()
+    Details=site.objects.all()
+    context={"Details": Details, "Social": Social, "Codes": Codes}
+    return render(request, "view_scratch_codes.html", context)
+
+
+def play_scratch_game(request, pk_prod):
+    Codes=scratch_code.objects.get(id=pk_prod)
+    Social=social_media_link.objects.all()
+    Details=site.objects.all()
+    context={"Details": Details, "Social": Social, "Codes": Codes}
+    return render(request, "play_scratch_game.html", context)

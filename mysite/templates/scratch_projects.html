@@ -1,12 +1,26 @@
 {% extends "basic.html" %}
-{% block title %} {{a.site_short_name}} | Python Projects {% endblock %}
+{% block title %} {{a.site_short_name}} | Scratch Projects {% endblock %}
 {% block body %}
 
+
+<body onload="main()">
 
 <!--name-->
 <p style="font-size: 250%; font-family: Kristen ITC; color: blue; margin-left: 7%; text-align: center;">{{Scratch_Projects.name}}</p>
 <hr>
 <!--name end-->
+
+
+<p id="p1" hidden>{{Codes.name}}</p>
+
+<script>
+  function main(){
+    x = document.getElementById("p1").innerHTML
+    if (x == "-"){
+      document.getElementById("buttons").hidden = true
+    }
+  }
+</script>
 
 
 <!--main card-->
@@ -79,7 +93,24 @@
 
           </div>
           <br>
-          <!---->
+
+          <div id="buttons">
+          <!--buttons-->
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" style="font-size: 25px; margin-bottom: 1%; width: 47%; margin: auto; margin-left: 2%;" aria-expanded="false">
+            Download Code
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{Codes.sb2_link}}" target="_blank">Download .sb2 (Scratch File)</a></li>
+            <li><a class="dropdown-item" href="{{Codes.apk_link}}" target="_blank">Download .apk (Mobile app File)</a></li>
+          </ul>
+
+          <a href="{% url 'view_scratch_codes' Codes.id %}"><button type="button" class="btn btn-info" style="width: 47%; font-size: 25px; margin-left: 2%;"><font color="white">View Code</font></button></a>
+
+          <p style="margin-top: 1%; margin-bottom: 1%;"></p>
+
+          <a href="{% url 'play_scratch_game' Codes.id %}"><button type="button" class="btn btn-info" style="width: 96%; font-size: 25px; margin-left: 2.2%;"><font color="white">Play Game Online</font></button></a>
+          <!--buttons end-->
+        </div>
 
         </td>
       </tr>

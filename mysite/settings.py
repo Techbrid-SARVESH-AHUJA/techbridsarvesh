@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'livesync',
     'django.contrib.staticfiles',
     'app',
+]
+
+MIDDLEWARE_CLASSES = [
+    'livesync.core.middleware.DjangoLiveSyncMiddleware',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +127,7 @@ USE_TZ = True
 
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
+
 
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_URL='/media/'

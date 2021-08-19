@@ -1,5 +1,5 @@
 {% extends "basic.html" %}
-{% block title %} {{a.site_short_name}} | Codes {% endblock %}
+{% block title %} {{a.site_short_name}} | Python Codes {% endblock %}
 {% block body %}  
 
 
@@ -42,7 +42,7 @@
       <a href="{{a.link}}" target="_blank" class="btn" style="font-size: 200%; background-color: chartreuse; margin-right: 2%; margin-top: 2%;">Click to download code</a>
       <!--download link end-->
       <!--view code-->
-      <a href="{% url 'view_codes' a.id %}"  class="btn" style="font-size: 200%; background-color: chartreuse; margin-left: 2%; margin-top: 2%;">Click to view code</a>
+      <a href="{% url 'view_python_codes' a.id %}"  class="btn" style="font-size: 200%; background-color: chartreuse; margin-left: 2%; margin-top: 2%;">Click to view code</a>
       <!--view code end-->
     </div>
   </div>

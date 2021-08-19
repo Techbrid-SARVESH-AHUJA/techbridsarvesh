@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from .import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
@@ -51,7 +51,11 @@ urlpatterns = [
 
     path('basic_electronics_projects/<str:pk_prod>/', views.basic_electronics_projects, name="basic_electronics_projects"),
 
-    path('view_codes/<str:pk_prod>/', views.view_codes, name="view_codes"),
+    path('view_python_codes/<str:pk_prod>/', views.view_python_codes, name="view_python_codes"),
+
+    path('view_scratch_codes/<str:pk_prod>/', views.view_scratch_codes, name="view_scratch_codes"),
+
+    path('play_scratch_game/<str:pk_prod>/', views.play_scratch_game, name="play_scratch_game"),
 
     url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),

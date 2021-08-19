@@ -1,0 +1,23 @@
+{% extends "basic.html" %}
+{% block title %} {{a.site_short_name}} | Play Scratch Game {% endblock %}
+{% block body %}
+
+
+<!--name-->
+<p style="font-size: 250%; font-family: Kristen ITC; color: blue; margin-left: 7%; text-align: center;">{{Codes.name}} Gameplay</p>
+<!--name end-->
+
+<hr>
+<br>
+
+<!--code-->
+<div style="text-align: center;">
+    <iframe src="{{Codes.project_embed_link}}" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+</div>
+<!--code end-->
+
+<hr>
+<br>
+
+
+{% endblock %}

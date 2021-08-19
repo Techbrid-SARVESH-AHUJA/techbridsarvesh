@@ -37,13 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'livesync',
     'django.contrib.staticfiles',
     'app',
-]
-
-MIDDLEWARE_CLASSES = [
-    'livesync.core.middleware.DjangoLiveSyncMiddleware',
 ]
 
 MIDDLEWARE = [

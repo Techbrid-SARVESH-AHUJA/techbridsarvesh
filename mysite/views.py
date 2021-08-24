@@ -3,6 +3,7 @@ from django.shortcuts import render
 from app.models import *
 from app.forms import *
 from django.core.mail import send_mail
+import twilio
 from twilio.rest import Client
 from mysite.settings import TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
 

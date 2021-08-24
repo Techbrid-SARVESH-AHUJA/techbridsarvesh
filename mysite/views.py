@@ -3,6 +3,8 @@ from django.shortcuts import render
 from app.models import *
 from app.forms import *
 from django.core.mail import send_mail
+from twilio.rest import Client
+from mysite.settings import TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
 
 
 def index(request):
@@ -51,6 +53,7 @@ def certifications(request):
 def feedback(request):
     #new feedback form
     form=feedback_form
+    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
     if request.method=='POST':
         form=feedback_form(request.POST)
 
@@ -77,6 +80,15 @@ def feedback(request):
         #final_message = "Name: " + user_name + " (" + e_mail_address + ") " + "     " + "Message: " + feedback_message
 
         send_mail("New feedback on your website", final_message, 'website.submissions1@gmail.com', ['10026.dpsgv@dpsgs.org'], fail_silently=False)
+
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body="New feedback on your website" + ''' 
+            
+            '''+final_message,
+            to='whatsapp:+919899002189'
+        )
+        print(message.sid)
 
         if form.is_valid:
             form.save()

@@ -88,7 +88,7 @@ def feedback(request):
             '''+final_message,
             to='whatsapp:+919899002189'
         )
-        print(message.sid)
+        
 
         if form.is_valid:
             form.save()
